@@ -1,9 +1,9 @@
-
 import WebSocket from 'ws';
 import fs from 'fs';
 import path from 'path';
 
-const SERVER_URL = 'ws://localhost:3020/ws'; // Updated to local server URL
+// ✅ Updated to your Render-deployed server
+const SERVER_URL = 'wss://zx-1.onrender.com/ws';
 const ws = new WebSocket(SERVER_URL);
 
 console.log('🔄 Attempting to connect to WebSocket server:', SERVER_URL);
@@ -27,11 +27,7 @@ ws.on('error', (err) => {
 });
 
 ws.on('close', (code, reason) => {
-  console.log(`❎ WebSocket connection closed. Code: ${code}, Reason: ${reason.toString()}`);
-});
-
-ws.on('error', (err) => {
-  console.error('💥 WebSocket error:', err.message);
+  console.log(`❎ WebSocket connection closed. Code: ${code}, Reason: ${reason?.toString()}`);
 });
 
 ws.on('message', (data, isBinary) => {
@@ -48,12 +44,4 @@ ws.on('message', (data, isBinary) => {
     const outputPath = path.resolve('./output_response.ulaw');
     fs.appendFileSync(outputPath, data);
   }
-});
-
-ws.on('close', () => {
-  console.log('❎ WebSocket connection closed');
-});
-
-ws.on('error', (err) => {
-  console.error('💥 WebSocket error:', err.message);
 });
