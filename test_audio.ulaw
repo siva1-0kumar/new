@@ -1,0 +1,5 @@
+/* This is a small sample μ-law encoded audio file content in binary format.
+   Since I cannot provide actual binary data here, I will provide a base64 encoded
+   string that you can decode to a .ulaw file for testing. */
+
+UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=
